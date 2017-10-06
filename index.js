@@ -61,15 +61,15 @@ const httrackCallback = (code, stdout, stderr) => {
 };
 
 shell.echo("Grabbing Nightwatch docs. This might take a while...");
-// shell.exec(
-//   `rm -rf www-grab && mkdir www-grab && cd www-grab && httrack ${NIGHTWATCH_DOCS_URL}`,
-//   httrackCallback
-// );
-
-httrackCallback();
+shell.rm("-rf", "www-grab");
+shell.mkdir("www-grab");
+shell.cd("www-grab");
+shell.exec(`httrack ${NIGHTWATCH_DOCS_URL}`, httrackCallback);
 
 shell.echo("Grabbing the Dashing lib...");
 shell.exec(`go get -u github.com/technosophos/dashing`);
+shell.cd("dashing");
 
-// shell.cd("dashing");
-// shell.exec(`$HOME/go/bin/dashing build nightwatchjs`);
+shell.echo("Generating the docset with Dashing...");
+shell.rm("-rf", "nightwatch.js.docset");
+shell.exec(`$HOME/go/bin/dashing build nightwatchjs`);
