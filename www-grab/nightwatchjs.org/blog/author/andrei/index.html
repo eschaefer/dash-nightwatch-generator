@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html data-uri="/blog">
+
+<!-- Mirrored from nightwatchjs.org/blog/author/andrei/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Oct 2017 18:47:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Andrei Rusu - Nightwatch.js | Nightwatch.js Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Browser automated testing done easy. Write efficient and straightforward Javascript End-to-End tests in Node.js which run against a Selenium server."/>
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="../../index.html"/>
+    <meta charset="utf-8">
+    <meta property="og:title" content="../../../author/andrei/Nightwatch.js/index.html"/>
+    <meta property="og:image" content="../../../img/logo-nightwatch.png"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link href="../../../css/main.css" rel="stylesheet">
+    <link href="../../../css/sidebar.css" rel="stylesheet">
+    <link href="../../../css/blog.css" rel="stylesheet">
+    <link href="../../../css/themes/prismjs.css" rel="stylesheet">
+</head>
+
+<body class="author-template author-andrei">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top navbar-right" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../guide/index.html">Developer Guide</a></li>
+                    <li><a href="../../../api/index.html">API Reference</a></li>
+                    <li class="active"><a href="../../index.html">Blog</a></li>
+                    <li><a href="../../../contact/index.html">Contact</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <section id="blog-container" data-page-uri="/blog" class="secondary">
+        <div class="jumbotron">
+					<div class="container">
+						<div class="row">
+          		<div class="col-md-8">
+                <h1><img src="../../../img/logo-nightwatch.png" /> Nightwatch<em>.js</em> Blog</h1>
+          		</div>
+          		<div class="col-md-4">
+            		<div class="carbonad">
+									<script async="" type="text/javascript" src="http://cdn.carbonads.com/carbon.js?zoneid=1673&amp;serve=C6AILKT&amp;placement=nightwatchjsorg" id="_carbonads_js"></script>
+								</div>
+          		</div>
+        		</div>
+        	</div>
+				</div>
+
+        <div class="container bs-docs-container">
+            <div class="row docs-section">
+                <div class="col-md-8" role="main">
+                    
+
+    <header class="main-header author-head no-cover">
+        <nav class="main-nav overlay clearfix">
+						<a class="back-button icon-arrow-left" href="../../index.html">← Back</a>
+        </nav>
+    </header>
+
+    <section class="author-profile inner">
+        <figure class="author-image">
+            <div class="img" style="background-image: url(../../content/images/2014/12/3qdQ3qGs.jpg)"><span class="hidden">Andrei Rusu's Picture</span></div>
+        </figure>
+        <h1 class="author-title">Andrei Rusu</h1>
+        <h2 class="author-bio">Founder - Nightwatch.js</h2>
+        <div class="author-meta">
+            <span class="author-location icon-location">Oslo, Norway</span>
+            
+            <span class="author-stats"><i class="icon-stats"></i> 1 post</span>
+        </div>
+    </section>
+
+<main class="content" role="main">
+
+    
+    
+    
+    
+        <article class="post">
+            <h3 id="/testing-webrtc-apps-with-nightwatch/"><a href="../../testing-webrtc-apps-with-nightwatch/index.html">Testing WebRTC Apps with Nightwatch</a></h3>
+            <p class="author">
+                <img class="author-thumb" src="../../content/images/2014/12/3qdQ3qGs.jpg" alt="Author image" nopin="nopin" />
+                <a href="../../../author/andrei/index.html">Andrei Rusu</a> • <time class="post-date" datetime="2014-12-03">03 December 2014</time>
+                • <a href="../../testing-webrtc-apps-with-nightwatch/index.html#disqus_thread"></a>
+            </p>
+    
+            <section class="post-content">
+    <h2 id="overviewofwebrtc">Overview of WebRTC</h2>
+    
+    <p>WebRTC is a set of standards that enables realtime, peer to peer audio, video and data streaming between browser clients without any plug-ins. Its main uses today are audio/video conferencing, screen-sharing apps and multiplayer games but it can have other uses as well, like interacting with more tradidional SIP endpoints.</p>
+    
+    <p>If you're new to WebRTC there are some great introductory articles at <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">HTML5Rocks</a> and <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">Mozilla Developer Network</a>. WebRTC is now available in Chrome, Firefox and Opera and there are already plenty of apps and websites enabling users to communicate using this relatively new technology.</p>
+    
+    <h2 id="gettingstarted">Getting started</h2>
+    
+    <p>Automated testing of WebRTC applications can be cumbersome since it involves not only starting fake media devices but also starting more than one browser. A reliable test should check if at least two clients are connected and that they can interact with each other.</p>
+    
+    <p>All that probably sounds like quite a bit of work but actually it's not that difficult to get it all working with Nightwatch. As a reference we'll use <a href="http://blog.andyet.com/2014/09/29/testing-webrtc-applications" target="_blank">the article</a> that Philipp Hancke at <a href="http://andyet.com/" target="_blank">andyet.com</a> has wrote for his blog. They run a quality web conferencing service at <a href="https://talky.io/" target="_blank">talky.io</a> and have a demo webrtc service at <a href="https://simplewebrtc.com/demo.html" target="_blank">simplewebrtc.com/demo.html</a> which we'll use in our test.</p>
+    
+    <p>We'll start by creating a typical Nightwatch-enabled project and downloading all the needed binaries, like the selenium server and the chrome driver and installing Nigthwatch (with <code>npm install -g nightwatch</code>) if it's not already installed.</p>
+    
+    <p>Then will create our <code>nightwatch.json</code> configuration file, which will look like this:  </p>
+    
+    <pre class="language-javascript"><code class="language-javascript">  
+    {
+      "src_folders" : ["./tests"],
+      "output_folder" : "./reports",
+      "live_output" : true,
+      "parallel_process_delay" : 1500,
+    
+      "selenium" : {
+        "start_process" : true,
+        "server_path" : "./bin/selenium-server-standalone-2.43.1.jar",
+        "log_path" : "",
+        "cli_args" : {
+          "webdriver.chrome.driver" : "bin/chromedriver"
+        }
+      },
+    
+      "test_settings" : {
+        "default" : {
+          "launch_url" : "<a href="https://simplewebrtc.com/demo.html">https://simplewebrtc.com/demo.html</a>",
+          "silent" : true,
+          "screenshots" : {
+            "enabled" : false,
+            "path" : "./screenshots"
+          },
+        },
+    
+        "chrome" : {
+          "desiredCapabilities" : {
+            "browserName" : "chrome",
+            "chromeOptions" : {
+              "args" : [
+                "use-fake-device-for-media-stream", 
+                "use-fake-ui-for-media-stream"
+              ]
+            }
+          }
+        }
+      }
+    }</code></pre>
+    
+    <p>For this prototype we'll be using chrome since it is easier to simulate a fake media device than Firefox. I have created two test environments, a <code>default</code> one and another named <code>chrome</code>.</p>
+    
+    <h2 id="using-fake-media-device">Using fake media device</h2>
+    
+    <p>Chrome provides two handy cli flags which we can use in our project to make things easier for testing: </p>
+    
+    <ul><li><code>--use-fake-device-for-media-stream</code> - simulates a fake webcam and mic for testing</li><li><code>--use-fake-ui-for-media-stream</code> - allows skipping the security prompt for sharing the media device</li></ul>
+    
+    <h2 id="test-overview">Test overview</h2>  
+    Next we'll proceed with writing the actual test. Currently the test project looks like this:  
+    <p></p>  
+    
+    <pre><code>├── bin/
+    |   ├── selenium-server-standalone-2.43.1.jar
+    |   └── chromedriver
+    ├── lib/  
+    |   └── custom-commands/
+    ├── reports/
+    ├── screenshots/  
+    ├── tests/  
+    ├── nightwatch.json
+    └── selenium-debug.log
+    </code></pre>
+    
+    
+    
+    The test will do the following:  
+    <ul>  
+    <li>open two browsers in parallel and navigate to the given url - the second one will open with a slight delay</li>  
+    <li>wait a number of seconds to become connected</li>  
+    <li>check if both video streams are connected</li>  
+    <li>when the second client is closed, check if the remote video is removed from the page</li>  
+    </ul>
+    
+    <h2 id="runningtestsinparallel">Running tests in parallel</h2>
+    
+    <p>We'll make use of one of the relatively new features in Nightwatch and still in an experimental stage, the ability to run the tests in parallel.</p>
+    
+    <p>If you're not familiar with this feature, the way it works is: say you have a few <em>environments</em> created in your nightwatch.json file under <code>test_settings</code>. You have a <code>default</code> environment, another one for <code>chrome</code> and another one for <code>firefox</code>. If you want to run the tests against both <code>chrome</code> and <code>firefox</code> environments in parallel, for instance, you simply specify both of them in the command line, like so:  </p>
+    
+    <pre class="language-bash"><code class="language-bash">$ nightwatch --env chrome,firefox</code></pre>
+    
+    <p></p>  
+    
+    <p>The test runner will then start each of them in a separate <a href="http://nodejs.org/api/child_process.html" target="_blank"><code>child_process</code></a>. You can read a bit more about this in the <a href="http://local.nightwatchjs.org/guide#run-parallel">Developer Guide</a>.</p>
+    
+    <h2 id="startingmorethanoneclient">Starting more than one client</h2>
+    
+    <p>Now the fun part begins. To start a second client we need to use the above feature, i.e. running the test in parallel. But simply running the same test in two browsers in parallel is not enough. We'll do the testing only for the first client and the second one will just wait a few seconds and then exit. </p>
+    
+    <p>To start two clients will just specify the <code>chrome</code> environment twice in the command line:  </p>
+    
+    <pre class="language-bash"><code class="language-bash">$ nightwatch --env chrome,chrome</code></pre>
+    
+    <p>We could also start a <code>firefox</code> environment but using a fake media device in Firefox is not very straightforward so we'll pass on that for now.</p>
+    
+    <h2 id="adaptingtestsettingsatruntimeperenvironment">Adapting test settings at run-time per environment</h2>
+    
+    <p>By default both clients will run the test the same way and output the results to <code>stdout</code> and write a JUnit XML report. Since the browser is the same the report file name will be the same as well and that means the second client's report will overwrite the first one. That's not very good because most of the testing will be done for the first client.</p>
+    
+    <p>The way we fix this is by disabling the output at run-time for the second environment. And we'll do this in the <code>nightwatch.conf.js</code> configuration file, which looks a bit like this:  </p>
+    
+    <pre><code class="language-javascript">module.exports = (function(settings) {
+      if (process.env.__NIGHTWATCH_ENV_KEY !== 'chrome_1') {
+        settings.output_folder = false;
+        settings.output = false;
+      }
+      return settings;
+    
+    })(require('./nightwatch.json'));</code></pre>
+    
+    <p>The <code>nightwatch.conf.js</code> always takes precedence over <code>nightwatch.json</code> if both are present.</p>
+    
+    <p>In the above we're reading the system environment variable <code>__NIGHTWATCH_ENV_KEY</code> which the Nightwatch runner populates with the current value of the testing environment that is being used - in this case <code>chrome</code> followed by a 1-based index: <code>chrome_1</code>. We want to disable the output for all other environments so we wont have any report file clashes.</p>
+    
+    <p>We'll be using the same way of distinguishing between testing  environments in the actual test.</p>
+    
+    <h2 id="writingtheactualtest">Writing the actual test</h2>
+    
+    <p>It is important to be able to know inside the test which client (i.e. environment) it is the current one so that it  performs different actions. We'll be reading the same system variable as in the previous step: <code>__NIGHTWATCH_ENV_KEY</code>.</p>
+    
+    <p>The test will do the following:  </p>
+    
+    <ul style="list-style:decimal">  
+    <li>open up the given url and wait for body element to be visible</li>  
+    <li>first client only:  
+    <ul style="list-style:square">  
+    <li>wait for <code>#localVideo</code> element to become connected</li>  
+    <li>wait for remote video element to become connected</li>  
+    <li>after the remote video is connected, waits 1000ms</li>  
+    <li>wait for the remote video element to be removed - i.e. the other peer has left the room</li>  
+    </ul>  
+    
+    <p><li>second client only - no assertions performed, only pauses for 10 seconds and then exits</li> <br />
+    </li> <br />
+    </ul></p>
+    
+    <pre><code class="language-javascript">module.exports = new (function() {  
+      var firstClient = process.env.__NIGHTWATCH_ENV_KEY == 'chrome_1';
+      var testCases = this;
+    
+      testCases['opening the browser and navigating to the url'] = function (client) {
+        client
+          .url('https://simplewebrtc.com/demo.html?nightwatchjs')
+          .waitForElementVisible('body', 1000);
+      };
+    
+      if (firstClient) {
+        testCases['wait for clients to become connected'] = function(client) {
+          client
+            .waitForElementVisible('#localVideo', 1500)
+            .waitForClientConnected('#localVideo', 5000)
+            .waitForClientConnected('#remotes .videoContainer:nth-child(1) video', 8000,
+              'Remote video stream (%s) was connected in %s ms.');
+        };
+    
+        testCases['wait for peer to disconnect'] = function (client) {
+          client
+            .pause(1000)
+            .waitForElementNotPresent('#remotes video', 10000);
+        };
+      } else {
+        testCases.suspend = function (client) {
+          client.pause(10000);
+        };
+      }
+    
+      testCases.after = function(client) {
+        client.end();
+      };
+    
+    })();
+    </code></pre>
+    
+    <h2 id="checkingiftheclientsareconnected">Checking if the clients are connected</h2>
+    
+    <p>You may have noticed in the above code snippet the presence of a custom command: <code>waitForClientConnected</code>. The way this works is it checks periodically for the <code>readyState</code> property of the supplied element to equal <code>4</code> (<code>HAVE_ENOUGH_DATA</code>). </p>
+    
+    <p>The possible values of the <code>readyState</code> property are as follows:  </p>
+    
+    <pre><code class="language-javascript">// ready state
+    const unsigned short HAVE_NOTHING = 0;  
+    const unsigned short HAVE_METADATA = 1;  
+    const unsigned short HAVE_CURRENT_DATA = 2;  
+    const unsigned short HAVE_FUTURE_DATA = 3;  
+    const unsigned short HAVE_ENOUGH_DATA = 4;  
+    readonly attribute unsigned short readyState;  
+    </code></pre>
+    
+    <p>More information is available on the <a href="http://dev.w3.org/html5/pf-summary/video.html#media-element" target="_blank">W3C Video Element page</a>.</p>
+    
+    <h2 id="resources">Resources</h2>
+    
+    <p>That's about it. The test project is available on <a href="https://github.com/beatfactor/nightwatch-webrtcdemo">GitHub</a>.</p>
+    
+    <p>Read more about WebRTC here:  </p>
+    
+    <ul>  
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Introduction" target="_blank">developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Introduction</a>  
+    </li>  
+    <li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/" target="_blank">html5rocks.com/en/tutorials/webrtc/basics/</a></li>  
+    </ul>
+            </section>
+        </article>
+    
+    
+    <nav class="pagination" role="navigation">
+        <span class="page-number">Page 1 of 1</span>
+    </nav>
+
+</main>
+
+                </div>
+
+                <div class="col-md-4 sidebar">
+                    <div role="complementary" class="row">
+                        <div class="col-xs-4">
+                            <a class="subscribe-button icon-feed" href="../../rss/index.html">Subscribe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <footer class="site-footer clearfix">
+        <div class="container">Nightwatchjs.org &copy; 2017</div>
+    </footer>
+    <script src="../../../js/third-party/prismjs.js"></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-47244459-1', 'nightwatchjs.org');
+        ga('send', 'pageview');
+
+        setTimeout(function() {
+          Prism.highlightAll();
+        }, 0);
+    </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+
+<!-- Mirrored from nightwatchjs.org/blog/author/andrei/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Oct 2017 18:47:01 GMT -->
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "nightwatch-docgen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^11.3.0",
+    "shelljs": "^0.7.8"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

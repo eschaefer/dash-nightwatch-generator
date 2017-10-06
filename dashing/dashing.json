@@ -1,0 +1,27 @@
+{
+  "name": "Nightwatch.js",
+  "package": "nightwatch.js",
+  "index": "nightwatchjs.org/api/index.html",
+  "selectors": {
+    ".apimethod h3": [
+      { "type": "Method", "matchpath": "nightwatchjs.org/api/index.html" }
+    ],
+    ".docs-section .page-header h2": [
+      {
+        "type": "Style",
+        "requiretext": "(Assert)|(Expect)",
+        "matchpath": "nightwatchjs.org/api/index.html"
+      }
+    ],
+    ".docs-section .page-header h2": [
+      {
+        "type": "Guide",
+        "requiretext":
+          "(Using Nightwatch)|(Running Tests)|(Working with Page Objects)|(Extending Nightwatch)|(Unit Testing with Nightwatch)",
+        "matchpath": "nightwatchjs.org/guide/index.html"
+      }
+    ]
+  },
+  "icon32x32": "logo-nightwatch.png",
+  "allowJS": true
+}
