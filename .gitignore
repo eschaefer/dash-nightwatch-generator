@@ -1,5 +1,5 @@
 node_modules
-www-grab
+www-grab/*
 .DS_Store
 nightwatch.js.docset
 nightwatchjs.org
