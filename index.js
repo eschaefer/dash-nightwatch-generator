@@ -4,9 +4,11 @@ const jsdom = require("jsdom");
 const shell = require("shelljs");
 const { JSDOM } = jsdom;
 
+const SCRAPED_DOCS_FOLDER = "www-grab";
+const DASHING_FOLDER = "dashing";
+const NIGHTWATCH_API_METHODS = `${SCRAPED_DOCS_FOLDER}/nightwatchjs.org/api/index.html`;
+const NIGHTWATCH_GUIDES = `${SCRAPED_DOCS_FOLDER}/nightwatchjs.org/guide/index.html`;
 const NIGHTWATCH_DOCS_URL = "http://nightwatchjs.org/api";
-const NIGHTWATCH_API_METHODS = "www-grab/nightwatchjs.org/api/index.html";
-const NIGHTWATCH_GUIDES = "www-grab/nightwatchjs.org/guide/index.html";
 
 // Check for httrack
 if (!shell.which("httrack")) {
@@ -48,8 +50,11 @@ const replaceGuidesPageContent = () => {
 };
 
 const copyNightwatchFiles = () => {
-  const nightwatchFiles = path.join(__dirname, "www-grab/nightwatchjs.org");
-  const dashingDir = path.join(__dirname, "dashing");
+  const nightwatchFiles = path.join(
+    __dirname,
+    `${SCRAPED_DOCS_FOLDER}/nightwatchjs.org`
+  );
+  const dashingDir = path.join(__dirname, DASHING_FOLDER);
 
   shell.cp("-R", nightwatchFiles, dashingDir);
 };
@@ -60,15 +65,18 @@ const httrackCallback = (code, stdout, stderr) => {
   copyNightwatchFiles();
 };
 
+/* Start generation commands
+*
+*/
 shell.echo("Grabbing Nightwatch docs. This might take a while...");
-shell.rm("-rf", "www-grab");
-shell.mkdir("www-grab");
-shell.cd("www-grab");
+shell.rm("-rf", SCRAPED_DOCS_FOLDER);
+shell.mkdir(SCRAPED_DOCS_FOLDER);
+shell.cd(SCRAPED_DOCS_FOLDER);
 shell.exec(`httrack ${NIGHTWATCH_DOCS_URL}`, httrackCallback);
 
 shell.echo("Grabbing the Dashing lib...");
 shell.exec(`go get -u github.com/technosophos/dashing`);
-shell.cd("dashing");
+shell.cd(DASHING_FOLDER);
 
 shell.echo("Generating the docset with Dashing...");
 shell.rm("-rf", "nightwatch.js.docset");
