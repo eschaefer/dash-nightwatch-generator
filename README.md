@@ -1,6 +1,7 @@
 ### Requirements
 - `httrack`
 - `go`
+- `node` >= 6
 - `yarn`
 
 ```
