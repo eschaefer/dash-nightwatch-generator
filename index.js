@@ -26,6 +26,9 @@ if (!shell.which("go")) {
   shell.exit(1);
 }
 
+/* Workaround for the weird javascript on the website. Replaces page body
+   with the actual page content.
+*/
 const replaceAPIPageContent = () => {
   const apiFilePath = path.join(__dirname, NIGHTWATCH_API_METHODS);
   const apiPage = fs.readFileSync(apiFilePath, "utf8");
@@ -37,6 +40,9 @@ const replaceAPIPageContent = () => {
   fs.writeFileSync(apiFilePath, dom.serialize(), "utf8");
 };
 
+/* Workaround for the weird javascript on the website. Replaces page body
+   with the actual page content.
+*/
 const replaceGuidesPageContent = () => {
   const guidesFilePath = path.join(__dirname, NIGHTWATCH_GUIDES);
   const guidesPage = fs.readFileSync(guidesFilePath, "utf8");
